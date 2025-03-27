@@ -1,27 +1,20 @@
-# GDB 使用手册
-[GDB调试利器](https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/gdb.html "GDB调试利器")
-## 功能
-GDB是一个由GNU开源组织发布的、UNIX/LINUX操作系统下的、基于命令行的、功能强大的程序调试工具
+# [GDB: The GNU Project Debugger](https://www.sourceware.org/gdb/)
+> [Debugging With GDB:官方文档](./999.DOCS/000.GDB.pdf)
+## What is GDB?
+GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed.
 
-## 1.1. 启动gdb
-### 添加编译选项
-+ 对C/C++程序的调试，需要在编译前就加上-g选项:
-   - $g++ -g hello.cpp -o hello
-### 调试程序
-+ 方式1：调试可执行文件:
-  - $gdb \<program>
-     + program也就是你的执行文件，一般在当前目录下。
+GDB can do four main kinds of things (plus other things in support of these) to help you catch bugs in the act:
++ Start your program, specifying anything that might affect its behavior.
++ Make your program stop on specified conditions.
++ Examine what has happened, when your program has stopped.
++ Change things in your program, so you can experiment with correcting the effects of one bug and go on to learn about another.
 
-+ 方式2： 调试core文件(core是程序非法执行后core dump后产生的文件):
-   - $gdb \<program> \<core dump file>
-      + $gdb program core.11127
-+ 方式3： 调试服务程序:
-   - $gdb \<program> \<PID>
-      + $gdb hello 11127
-      + 如果你的程序是一个服务程序，那么你可以指定这个服务程序运行时的进程ID。gdb会自动attach上去，并调试他。program应该在PATH环境变量中搜索得到。
+Those programs might be executing on the same machine as GDB (native), on another machine (remote), or on a simulator. GDB can run on most popular UNIX and Microsoft Windows variants, as well as on macOS.
+
 
 ## 1.2. gdb交互命令
 启动gdb后，进入到交互模式，通过以下命令完成对程序的调试；注意高频使用的命令一般都会有缩写，熟练使用这些缩写命令能提高调试的效率；
+
 ### 运行
 1. run：简记为 r ，其作用是运行程序，当遇到断点后，程序会在断点处停止运行，等待用户输入下一步的命令。
 2. continue （简写c ）：继续执行，到下一个断点处（或运行结束）
