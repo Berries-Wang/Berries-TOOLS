@@ -24,4 +24,10 @@ FFmpeg 是一个功能强大且开源的多媒体框架，几乎可以处理任�
 ```shell
 # ffmpeg -ss [开始时间] -i [输入文件] -t [持续时间(秒)] -c copy [输出文件]
 ./ffmpeg -i 568117756-1-16.mp4 -c copy -map 0  -ss '00:20:00' -t 600 003.mp4
+# 将 -t (视频长度) 可以换为 -to '00:30:00' 即，指定结束时间
+# Per-file options (input and output):
+# -f <fmt>            force container format (auto-detected otherwise)
+# -t <duration>       stop transcoding after specified duration
+# -to <time_stop>     stop transcoding after specified time is reached
+# -ss <time_off>      start transcoding at specified time
 ```
